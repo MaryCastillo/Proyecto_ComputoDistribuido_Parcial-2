@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" agent="Kiro" version="24.0.0">
+  <diagram id="secuencia" name="Secuencia">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="Diagrama de Secuencia - Operacion ADS con seleccion distribuida y failover (25 + 15 desde G1)" style="text;html=1;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="1090" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="noteTop" value="Todas las celulas ya hicieron HELLO/WELCOME. Los servidores de SUMA se descubren por PRESENCE y mantienen la lista de vivos: {SU1, SU2}. En este escenario SU1 (el primario) esta CAIDO." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="50" width="1050" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Lifelines -->
+        <mxCell id="Usuario" value="Usuario" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#DDDDDD;" vertex="1" parent="1">
+          <mxGeometry x="90" y="120" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="llUsuario" style="endArrow=none;dashed=1;html=1;strokeColor=#888888;" edge="1" parent="1" source="Usuario"><mxGeometry relative="1" as="geometry"><mxPoint x="105" y="850" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="G1" value="GUI G1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#3498DB;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="130" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="llG1" style="endArrow=none;dashed=1;html=1;strokeColor=#888888;" edge="1" parent="1" source="G1"><mxGeometry relative="1" as="geometry"><mxPoint x="280" y="850" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="N1" value="NODO N1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F39C12;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="130" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="llN1" style="endArrow=none;dashed=1;html=1;strokeColor=#888888;" edge="1" parent="1" source="N1"><mxGeometry relative="1" as="geometry"><mxPoint x="500" y="850" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="SU1" value="SRV SUMA (N1)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E74C3C;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="620" y="130" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="llSU1" style="endArrow=none;dashed=1;html=1;strokeColor=#888888;" edge="1" parent="1" source="SU1"><mxGeometry relative="1" as="geometry"><mxPoint x="680" y="850" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="N2" value="NODO N2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5B041;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="130" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="llN2" style="endArrow=none;dashed=1;html=1;strokeColor=#888888;" edge="1" parent="1" source="N2"><mxGeometry relative="1" as="geometry"><mxPoint x="880" y="850" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="SU2" value="SRV SUMA (N2)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#27AE60;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="130" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="llSU2" style="endArrow=none;dashed=1;html=1;strokeColor=#888888;" edge="1" parent="1" source="SU2"><mxGeometry relative="1" as="geometry"><mxPoint x="1060" y="850" as="targetPoint" /></mxGeometry></mxCell>
+
+        <!-- Messages -->
+        <mxCell id="m1" value="Escribe 25 + 15 y Enviar" style="html=1;endArrow=block;startArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="105" y="210" as="sourcePoint" /><mxPoint x="280" y="210" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="mSelf1" value="estado=EN_PROCESO; crea OP_REQ (msgId=M1, reqId=R1, cc=SUM_REQ)" style="html=1;endArrow=block;startArrow=none;rounded=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="280" y="230" as="sourcePoint" /><mxPoint x="280" y="265" as="targetPoint" /><Array as="points"><mxPoint x="400" y="230" /><mxPoint x="400" y="265" /></Array></mxGeometry></mxCell>
+
+        <mxCell id="m2" value="OP_REQ (msgId=M1, reqId=R1)" style="html=1;endArrow=block;startArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="280" y="290" as="sourcePoint" /><mxPoint x="500" y="290" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="noteTO" value="arranca timeout (4s) y reintentos (si hiciera falta)" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=9;align=left;" vertex="1" parent="1"><mxGeometry x="140" y="300" width="130" height="50" as="geometry" /></mxCell>
+
+        <mxCell id="mN1seen" value="markSeen(M1) -&gt; nuevo" style="html=1;endArrow=block;startArrow=none;rounded=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="500" y="320" as="sourcePoint" /><mxPoint x="500" y="350" as="targetPoint" /><Array as="points"><mxPoint x="590" y="320" /><mxPoint x="590" y="350" /></Array></mxGeometry></mxCell>
+        <mxCell id="m3" value="broadcast OP_REQ (ttl--)" style="html=1;endArrow=block;startArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="500" y="375" as="sourcePoint" /><mxPoint x="880" y="375" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="m4" value="(entrega local) -- SU1 esta caido, no recibe" style="html=1;endArrow=block;startArrow=none;dashed=1;strokeColor=#b85450;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="500" y="400" as="sourcePoint" /><mxPoint x="680" y="400" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="mN2seen" value="markSeen(M1) -&gt; nuevo" style="html=1;endArrow=block;startArrow=none;rounded=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="880" y="425" as="sourcePoint" /><mxPoint x="880" y="455" as="targetPoint" /><Array as="points"><mxPoint x="960" y="425" /><mxPoint x="960" y="455" /></Array></mxGeometry></mxCell>
+        <mxCell id="m5" value="entrega OP_REQ a su celula SUMA" style="html=1;endArrow=block;startArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="880" y="480" as="sourcePoint" /><mxPoint x="1060" y="480" as="targetPoint" /></mxGeometry></mxCell>
+
+        <mxCell id="mSU2a" value="primario = hash(R1) % N =&gt; SU1. Yo soy SU2 (secundario): programo respuesta diferida (failover)" style="html=1;endArrow=block;startArrow=none;rounded=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1060" y="505" as="sourcePoint" /><mxPoint x="1060" y="545" as="targetPoint" /><Array as="points"><mxPoint x="1140" y="505" /><mxPoint x="1140" y="545" /></Array></mxGeometry></mxCell>
+        <mxCell id="noteFO" value="Espera un retardo corto. Como SU1 esta caido, no aparece ninguna OP_RES para R1 =&gt; SU2 cubre." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=9;align=left;" vertex="1" parent="1"><mxGeometry x="960" y="555" width="200" height="50" as="geometry" /></mxCell>
+        <mxCell id="mSU2b" value="no hay respuesta para R1 =&gt; atiende. Calcula 40, marca reqId R1, guarda CSV (FAILOVER)" style="html=1;endArrow=block;startArrow=none;rounded=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1060" y="615" as="sourcePoint" /><mxPoint x="1060" y="655" as="targetPoint" /><Array as="points"><mxPoint x="1140" y="615" /><mxPoint x="1140" y="655" /></Array></mxGeometry></mxCell>
+
+        <mxCell id="m6" value="OP_RES msgId=M2, reqId=R1, cc=SUM_RES, target=G1, result=40" style="html=1;endArrow=block;startArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1060" y="680" as="sourcePoint" /><mxPoint x="880" y="680" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="m7" value="broadcast OP_RES (ttl--)" style="html=1;endArrow=block;startArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="880" y="705" as="sourcePoint" /><mxPoint x="500" y="705" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="mN1seen2" value="markSeen(M2) -&gt; nuevo" style="html=1;endArrow=block;startArrow=none;rounded=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="500" y="725" as="sourcePoint" /><mxPoint x="500" y="755" as="targetPoint" /><Array as="points"><mxPoint x="590" y="725" /><mxPoint x="590" y="755" /></Array></mxGeometry></mxCell>
+        <mxCell id="m8" value="broadcast OP_RES (target=G1)" style="html=1;endArrow=block;startArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="500" y="780" as="sourcePoint" /><mxPoint x="280" y="780" as="targetPoint" /></mxGeometry></mxCell>
+        <mxCell id="mG1fin" value="target==G1 y reqId R1 pendiente =&gt; acepta (primera gana), estado=COMPLETADA. Guarda RESPUESTA (CSV) y muestra 40" style="html=1;endArrow=block;startArrow=none;rounded=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="280" y="800" as="sourcePoint" /><mxPoint x="280" y="835" as="targetPoint" /><Array as="points"><mxPoint x="420" y="800" /><mxPoint x="420" y="835" /></Array></mxGeometry></mxCell>
+
+        <mxCell id="noteBot" value="Si SU1 estuviera vivo, responderia de inmediato (primario) y SU2 veria esa OP_RES y CANCELARIA su respuesta diferida =&gt; una sola respuesta." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=10;align=left;" vertex="1" parent="1"><mxGeometry x="620" y="860" width="500" height="40" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,217 @@
+<mxfile host="app.diagrams.net" agent="Kiro" version="24.0.0">
+  <diagram id="flujo" name="Flujo">
+    <mxGraphModel dx="1400" dy="2000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="Diagrama de Flujo - Operacion ADS con seleccion distribuida y failover" style="text;html=1;fontSize=15;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="760" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="start" value="Inicio" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="360" y="60" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n1" value="Usuario escribe operacion y presiona Enviar en una GUI" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="120" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d1" value="Operandos llenos y operador valido?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n1b" value="Avisar en barra de estado y NO enviar" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="210" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="stop1" value="Fin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="660" y="290" width="60" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n2" value="Mapear operador -&gt; Codigo de Contenido (+ =&gt; SUM_REQ, ...)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="300" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" value="Crear reqId LOGICO estable + msgId unico" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="365" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" value="estado = EN_PROCESO; guardar SOLICITUD (CSV)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="420" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" value="Enviar OP_REQ al nodo" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="475" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" value="Arrancar timeout (4s) y contador de reintentos" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="530" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="noteTO" value="Si vence el timeout sin respuesta:&#10;- si quedan reintentos: estado=REINTENTANDO, nuevo msgId, MISMO reqId, reenviar;&#10;- si se agotan: estado=TIMEOUT (error controlado)." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="520" width="250" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n7" value="El nodo recibe el mensaje" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="590" width="200" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d2" value="msgId ya visto en este nodo?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="645" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n7b" value="DESCARTAR (duplicado), no retransmitir" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="665" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="stop2" value="Fin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="660" y="745" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n8" value="Registrar msgId (markSeen)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="755" width="200" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d3" value="TTL &gt; 1?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="810" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n9" value="Decrementar TTL y BROADCAST a nodos y celulas (menos origen)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="920" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n9b" value="Entregar solo a celulas locales" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="820" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n10" value="Las celulas servidor del servicio reciben la solicitud" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="990" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d4" value="cc coincide con mi servicio?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1060" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n10b" value="Ignorar (no es mi operacion)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1080" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="stop3" value="Fin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="660" y="1160" width="60" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n11" value="Calcular primario = hash(reqId) % N_vivos (lista de servidores vivos por PRESENCE)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="1170" width="220" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d5" value="Soy el primario?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1240" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n12si" value="Responder de inmediato" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1500" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n12no" value="Esperar un retardo escalonado" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1250" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" value="Ya vi una OP_RES para este reqId?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1310" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n13canc" value="CANCELAR (otro ya respondio)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1420" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="stop4" value="Fin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="660" y="1480" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n13fo" value="Cubrir la solicitud (FAILOVER)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1420" width="200" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d7" value="reqId ya atendido localmente?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1560" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n14" value="No repetir (idempotencia)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1580" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="stop5" value="Fin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="660" y="1650" width="60" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d8" value="Division entre cero / operando no numerico?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="310" y="1660" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n15err" value="Resultado = mensaje de ERROR controlado" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1680" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n15ok" value="Calcular con BigDecimal" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1770" width="200" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n16" value="Guardar resultado en CSV (evento PRIMARIO o FAILOVER)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1830" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n17" value="Generar OP_RES (nuevo msgId, reqId original, cc de respuesta, target = GUI origen)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1900" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n18" value="Difundir OP_RES por broadcast" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1980" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n19" value="La GUI destino recibe OP_RES (target == su id)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="2040" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d9" value="reqId sigue pendiente y cc correcto?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="2110" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n19b" value="Descartar (duplicada o tardia)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="2130" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="stop6" value="Fin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="660" y="2210" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n20" value="estado = COMPLETADA; guardar RESPUESTA (CSV); Mostrar el resultado" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="2220" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="stopFin" value="Fin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="360" y="2310" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- edges -->
+        <mxCell id="e_s_1" style="endArrow=block;html=1;" edge="1" parent="1" source="start" target="n1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_1_d1" style="endArrow=block;html=1;" edge="1" parent="1" source="n1" target="d1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d1_no" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d1" target="n1b"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_n1b_stop" style="endArrow=block;html=1;" edge="1" parent="1" source="n1b" target="stop1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d1_si" value="Si" style="endArrow=block;html=1;" edge="1" parent="1" source="d1" target="n2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_2_3" style="endArrow=block;html=1;" edge="1" parent="1" source="n2" target="n3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_3_4" style="endArrow=block;html=1;" edge="1" parent="1" source="n3" target="n4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_4_5" style="endArrow=block;html=1;" edge="1" parent="1" source="n4" target="n5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_5_6" style="endArrow=block;html=1;" edge="1" parent="1" source="n5" target="n6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_6_7" style="endArrow=block;html=1;" edge="1" parent="1" source="n6" target="n7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_7_d2" style="endArrow=block;html=1;" edge="1" parent="1" source="n7" target="d2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d2_si" value="Si" style="endArrow=block;html=1;" edge="1" parent="1" source="d2" target="n7b"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_n7b_stop" style="endArrow=block;html=1;" edge="1" parent="1" source="n7b" target="stop2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d2_no" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d2" target="n8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_8_d3" style="endArrow=block;html=1;" edge="1" parent="1" source="n8" target="d3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d3_si" value="Si" style="endArrow=block;html=1;" edge="1" parent="1" source="d3" target="n9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d3_no" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d3" target="n9b"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_9_10" style="endArrow=block;html=1;" edge="1" parent="1" source="n9" target="n10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_9b_10" style="endArrow=block;html=1;" edge="1" parent="1" source="n9b" target="n10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_10_d4" style="endArrow=block;html=1;" edge="1" parent="1" source="n10" target="d4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d4_no" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d4" target="n10b"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_n10b_stop" style="endArrow=block;html=1;" edge="1" parent="1" source="n10b" target="stop3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d4_si" value="Si" style="endArrow=block;html=1;" edge="1" parent="1" source="d4" target="n11"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_11_d5" style="endArrow=block;html=1;" edge="1" parent="1" source="n11" target="d5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d5_si" value="Si" style="endArrow=block;html=1;" edge="1" parent="1" source="d5" target="n12si"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d5_no" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d5" target="n12no"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_12no_d6" style="endArrow=block;html=1;" edge="1" parent="1" source="n12no" target="d6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d6_si" value="Si" style="endArrow=block;html=1;" edge="1" parent="1" source="d6" target="n13canc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_13canc_stop" style="endArrow=block;html=1;" edge="1" parent="1" source="n13canc" target="stop4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d6_no" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d6" target="n13fo"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_12si_d7" style="endArrow=block;html=1;" edge="1" parent="1" source="n12si" target="d7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_13fo_d7" style="endArrow=block;html=1;" edge="1" parent="1" source="n13fo" target="d7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d7_si" value="Si" style="endArrow=block;html=1;" edge="1" parent="1" source="d7" target="n14"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_14_stop" style="endArrow=block;html=1;" edge="1" parent="1" source="n14" target="stop5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d7_no" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d7" target="d8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d8_si" value="Si" style="endArrow=block;html=1;" edge="1" parent="1" source="d8" target="n15err"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d8_no" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d8" target="n15ok"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_15err_16" style="endArrow=block;html=1;" edge="1" parent="1" source="n15err" target="n16"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_15ok_16" style="endArrow=block;html=1;" edge="1" parent="1" source="n15ok" target="n16"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_16_17" style="endArrow=block;html=1;" edge="1" parent="1" source="n16" target="n17"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_17_18" style="endArrow=block;html=1;" edge="1" parent="1" source="n17" target="n18"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_18_19" style="endArrow=block;html=1;" edge="1" parent="1" source="n18" target="n19"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_19_d9" style="endArrow=block;html=1;" edge="1" parent="1" source="n19" target="d9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d9_no" value="No" style="endArrow=block;html=1;" edge="1" parent="1" source="d9" target="n19b"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_19b_stop" style="endArrow=block;html=1;" edge="1" parent="1" source="n19b" target="stop6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_d9_si" value="Si" style="endArrow=block;html=1;" edge="1" parent="1" source="d9" target="n20"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_20_fin" style="endArrow=block;html=1;" edge="1" parent="1" source="n20" target="stopFin"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

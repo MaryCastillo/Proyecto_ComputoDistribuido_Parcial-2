@@ -1,0 +1,196 @@
+<mxfile host="Electron" agent="Kiro">
+  <diagram id="arqtopo" name="Arquitectura y Topologia">
+    <mxGraphModel dx="2344" dy="1031" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=16;fontStyle=1;align=center;" value="Arquitectura y Topologia ADS - Campo de Datos completo (4 nodos en malla, 20 celulas)" vertex="1">
+          <mxGeometry height="30" width="1320" x="40" y="15" as="geometry" />
+        </mxCell>
+        <mxCell id="P1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF9E7;strokeColor=#B7950B;verticalAlign=top;fontStyle=1;" value="Nodo 1  (localhost:6001)" vertex="1">
+          <mxGeometry height="300" width="400" x="60" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="N1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F39C12;strokeColor=#B7950B;fontColor=#ffffff;fontStyle=1;" value="NODO N1&#xa;:6001" vertex="1">
+          <mxGeometry height="55" width="120" x="280" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="G1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498DB;strokeColor=#2471A3;fontColor=#ffffff;fontStyle=1;" value="GUI G1" vertex="1">
+          <mxGeometry height="40" width="110" x="90" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="S1A" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S1-SUMA" vertex="1">
+          <mxGeometry height="38" width="110" x="90" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="S1B" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S1-RESTA" vertex="1">
+          <mxGeometry height="38" width="110" x="90" y="212" as="geometry" />
+        </mxCell>
+        <mxCell id="S1C" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S1-MULT" vertex="1">
+          <mxGeometry height="38" width="110" x="90" y="259" as="geometry" />
+        </mxCell>
+        <mxCell id="S1D" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S1-DIV" vertex="1">
+          <mxGeometry height="38" width="110" x="230" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="c1a" edge="1" parent="1" source="G1" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c1b" edge="1" parent="1" source="S1A" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c1c" edge="1" parent="1" source="S1B" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c1d" edge="1" parent="1" source="S1C" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c1e" edge="1" parent="1" source="S1D" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#2E86C1;verticalAlign=top;fontStyle=1;" value="Nodo 2  (localhost:6002)" vertex="1">
+          <mxGeometry height="300" width="400" x="940" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="N2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F39C12;strokeColor=#B7950B;fontColor=#ffffff;fontStyle=1;" value="NODO N2&#xa;:6002" vertex="1">
+          <mxGeometry height="55" width="120" x="1000" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="G2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498DB;strokeColor=#2471A3;fontColor=#ffffff;fontStyle=1;" value="GUI G2" vertex="1">
+          <mxGeometry height="40" width="110" x="1200" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="S2A" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S2-SUMA" vertex="1">
+          <mxGeometry height="38" width="110" x="1200" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="S2B" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S2-RESTA" vertex="1">
+          <mxGeometry height="38" width="110" x="1200" y="212" as="geometry" />
+        </mxCell>
+        <mxCell id="S2C" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S2-MULT" vertex="1">
+          <mxGeometry height="38" width="110" x="1200" y="259" as="geometry" />
+        </mxCell>
+        <mxCell id="S2D" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S2-DIV" vertex="1">
+          <mxGeometry height="38" width="110" x="1060" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="c2a" edge="1" parent="1" source="G2" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2b" edge="1" parent="1" source="S2A" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2c" edge="1" parent="1" source="S2B" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2d" edge="1" parent="1" source="S2C" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2e" edge="1" parent="1" source="S2D" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#1E8449;verticalAlign=top;fontStyle=1;" value="Nodo 3  (localhost:6003)" vertex="1">
+          <mxGeometry height="300" width="400" x="60" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="N3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F39C12;strokeColor=#B7950B;fontColor=#ffffff;fontStyle=1;" value="NODO N3&#xa;:6003" vertex="1">
+          <mxGeometry height="55" width="120" x="280" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="G3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498DB;strokeColor=#2471A3;fontColor=#ffffff;fontStyle=1;" value="GUI G3" vertex="1">
+          <mxGeometry height="40" width="110" x="90" y="915" as="geometry" />
+        </mxCell>
+        <mxCell id="S3A" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S3-SUMA" vertex="1">
+          <mxGeometry height="38" width="110" x="90" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="S3B" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S3-RESTA" vertex="1">
+          <mxGeometry height="38" width="110" x="90" y="813" as="geometry" />
+        </mxCell>
+        <mxCell id="S3C" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S3-MULT" vertex="1">
+          <mxGeometry height="38" width="110" x="90" y="766" as="geometry" />
+        </mxCell>
+        <mxCell id="S3D" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S3-DIV" vertex="1">
+          <mxGeometry height="38" width="110" x="230" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c3a" edge="1" parent="1" source="G3" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3b" edge="1" parent="1" source="S3A" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3c" edge="1" parent="1" source="S3B" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3d" edge="1" parent="1" source="S3C" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3e" edge="1" parent="1" source="S3D" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDEDEC;strokeColor=#CB4335;verticalAlign=top;fontStyle=1;" value="Nodo 4  (localhost:6004)" vertex="1">
+          <mxGeometry height="300" width="400" x="940" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="N4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F39C12;strokeColor=#B7950B;fontColor=#ffffff;fontStyle=1;" value="NODO N4&#xa;:6004" vertex="1">
+          <mxGeometry height="55" width="120" x="1000" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="G4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498DB;strokeColor=#2471A3;fontColor=#ffffff;fontStyle=1;" value="GUI G4" vertex="1">
+          <mxGeometry height="40" width="110" x="1200" y="915" as="geometry" />
+        </mxCell>
+        <mxCell id="S4A" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S4-SUMA" vertex="1">
+          <mxGeometry height="38" width="110" x="1200" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="S4B" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S4-RESTA" vertex="1">
+          <mxGeometry height="38" width="110" x="1200" y="813" as="geometry" />
+        </mxCell>
+        <mxCell id="S4C" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S4-MULT" vertex="1">
+          <mxGeometry height="38" width="110" x="1200" y="766" as="geometry" />
+        </mxCell>
+        <mxCell id="S4D" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=11;" value="SRV S4-DIV" vertex="1">
+          <mxGeometry height="38" width="110" x="1060" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c4a" edge="1" parent="1" source="G4" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4b" edge="1" parent="1" source="S4A" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4c" edge="1" parent="1" source="S4B" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4d" edge="1" parent="1" source="S4C" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4e" edge="1" parent="1" source="S4D" style="endArrow=none;dashed=1;html=1;strokeColor=#5D6D7E;" target="N4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mN1N2" edge="1" parent="1" source="N1" style="endArrow=none;html=1;strokeColor=#2C3E50;strokeWidth=2;fontSize=10;" target="N2" value="broadcast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mN3N4" edge="1" parent="1" source="N3" style="endArrow=none;html=1;strokeColor=#2C3E50;strokeWidth=2;fontSize=10;" target="N4" value="broadcast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mN1N3" edge="1" parent="1" source="N1" style="endArrow=none;html=1;strokeColor=#2C3E50;strokeWidth=2;fontSize=10;" target="N3" value="broadcast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mN2N4" edge="1" parent="1" source="N2" style="endArrow=none;html=1;strokeColor=#2C3E50;strokeWidth=2;fontSize=10;" target="N4" value="broadcast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mN1N4" edge="1" parent="1" source="N1" style="endArrow=none;html=1;strokeColor=#2C3E50;strokeWidth=2;fontSize=10;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="N4" value="broadcast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mN2N3" edge="1" parent="1" source="N2" style="endArrow=none;html=1;strokeColor=#2C3E50;strokeWidth=2;fontSize=10;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="N3" value="broadcast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nMalla" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=11;align=left;" value="Campo de Datos (sin coordinador central)&#xa;- Los 4 nodos ejecutan el MISMO programa y forman una malla completa (6 enlaces, K4).&#xa;- Cada nodo difunde (BROADCAST) lo recibido a sus demas enlaces y descarta msgId repetidos (anti-ciclos, TTL).&#xa;- Si un enlace de malla se cae, se reconstruye solo." vertex="1">
+          <mxGeometry height="110" width="400" x="500" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="nServicio" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#D5F5E3;strokeColor=#27AE60;fontSize=11;align=left;" value="Seleccion distribuida + failover (por servicio)&#xa;- 4 servidores por servicio (uno por nodo). Ej: SUMA = {S1-SUMA, S2-SUMA, S3-SUMA, S4-SUMA}.&#xa;- Se descubren con PRESENCE (cada 2s, expira a 6s).&#xa;- Primario = hash(reqId) % N_vivos responde ya; los secundarios cubren por failover escalonado.&#xa;- Resultado: una sola respuesta, con respaldo." vertex="1">
+          <mxGeometry height="125" width="400" x="500" y="545" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBFCFC;strokeColor=#5D6D7E;verticalAlign=top;fontStyle=1;align=left;spacingLeft=8;" value="Leyenda" vertex="1">
+          <mxGeometry height="140" width="400" x="500" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lgN" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F39C12;strokeColor=#B7950B;fontColor=#ffffff;fontSize=10;align=left;spacingLeft=6;" value="NODO - enrutador del Campo de Datos (broadcast + anti-ciclos)" vertex="1">
+          <mxGeometry height="24" width="370" x="515" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="lgG" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498DB;strokeColor=#2471A3;fontColor=#ffffff;fontSize=10;align=left;spacingLeft=6;" value="GUI - celula cliente (calculadora)" vertex="1">
+          <mxGeometry height="24" width="370" x="515" y="128" as="geometry" />
+        </mxCell>
+        <mxCell id="lgS" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E74C3C;strokeColor=#A93226;fontColor=#ffffff;fontSize=10;align=left;spacingLeft=6;" value="SRV - celula servidor de UN servicio (SUMA/RESTA/MULT/DIV)" vertex="1">
+          <mxGeometry height="24" width="370" x="515" y="156" as="geometry" />
+        </mxCell>
+        <mxCell id="lgLines" parent="1" style="text;html=1;fontSize=10;align=left;spacingLeft=6;" value="Linea gruesa = enlace de malla (broadcast) ; Linea punteada = celula &lt;-&gt; nodo (HELLO/PRESENCE/OP_REQ/OP_RES)" vertex="1">
+          <mxGeometry height="24" width="370" x="515" y="182" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
