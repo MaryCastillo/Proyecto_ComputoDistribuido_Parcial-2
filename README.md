@@ -7,10 +7,6 @@ comunicación por **broadcast** y **Códigos de Contenido** para solicitudes y
 respuestas. Escrita en **Java** (solo biblioteca estándar), GUI **Swing** y
 persistencia/bitácora en **archivos CSV**.
 
-> Esta es la versión v2 (segundo parcial). La versión del primer parcial
-> (cliente/middleware/servidor de tres capas) se conserva en la carpeta
-> superior como referencia.
-
 ---
 
 ## 1. Arquitectura ADS
